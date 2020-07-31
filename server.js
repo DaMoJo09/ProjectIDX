@@ -1,7 +1,29 @@
+const mongoose = require ('mongoose');
+
 const express = require('express');
 const { response } = require('express');
 const { request } = require('http');
 const app = express();
+
+
+const connectionString = 'mongodb://localhost/superheros'
+mongoose.connect(connectionString, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true, 
+  useCreateIndex: true, 
+  useFindAndModify: false
+})
+
+mongoose.connection.on('connected', () => {
+  console.log(`mongoose connected to ${connectionString}`)
+
+});
+
+mongoose.connection.on('disconnected', () =>{
+  console.log('mongoose disconnected')
+})
+
+// mongoose.connection.on('err', )
 
 //  Listen function
 
@@ -28,3 +50,9 @@ app.get('/superheros/new', (request, response) => {
 })
 
 // Update Route
+
+app.get('/superheros/show', (request, response) => {
+  response.render ('superheros/show.ejs')
+})
+
+
