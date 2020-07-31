@@ -15,8 +15,16 @@ app.get('/superheros',(request, response) => {
   response.render('index.ejs')
 })
 
-// Index ROute for Super Heros
+// Index Route for Super Heros
 
 app.get('/superheros/gallery', (request, response) => {
   response.render('superheros/index.ejs')
 })
+
+// Create a New Super Hero Route
+
+app.get('/superheros/new', (request, response) => {
+  response.render ('superheros/new.ejs')
+})
+
+// Update Route
