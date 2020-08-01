@@ -34,20 +34,21 @@ mongoose.connection.on('error', (err) => {
   console.log('mongoose error: ', err)
 });
 
-// New Super Hero Route
+// New Superhero Route
 
 app.get('/superheros/new', (request, response) => {
   response.render ('superheros/new.ejs')
 });
 
 // Create Superhero Route
+
 app.post('/superheros', (request, response) => {
   Superhero.create(request.body, (err, createdSuperhero) => {
     response.redirect('/superheros/gallery')
     });
   });
 
-// Index Route for Super Heros
+// Index Route for Superheros
 
 app.get('/superheros/gallery', (request, response) => {
   Superhero.find({}, (err, allSuperheros) => {
@@ -63,28 +64,30 @@ app.get('/superheros',(request, response) => {
   response.render('home.ejs')
 });
 
+
+// Show Route for Superheros
+
+app.get('/superheros/:id', (request, response) => {
+    Superhero.findById(request.params.id, (err, foundSuperhero) => {
+        response.render('superheros/show.ejs', {
+            superheros: foundSuperhero
+    });
+  });
+});
+      
+      
+//delete
+//edit
+//update
+
+
 // // Update Route
 
 // app.get('/superheros/show', (request, response) => {
 //   response.render ('superheros/show.ejs')
 // });
 
-
-// // Show Route
-// app.get('/superheros/gallery', (request, response) => {
-//   Superhero.find({}, (err, allSuperheros) => {
-//     response.render('/superheros/index.ejs', {
-//       superheros: allSuperheros
-//     })
-//   })
-// })
-
-
-//delete
-//edit
-//update
-
-
+      
 //  Listen function
 
 app.listen(3000, () => {
