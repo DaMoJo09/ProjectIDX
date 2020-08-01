@@ -13,23 +13,27 @@
     <nav>
       <ul>
           <li>
-
             <button><a href="/superheros/new"> create super hero </a></button>
-           
-
           </li>
 
           <li>
-
           <button><a href="/superheros/newpower"> create new power </a></button>
-           
-
           </li>
-
-         
       </ul>
     </nav>
 
+    <main>
+      <h2>List of Superheroes</h2>
+      <ul>
+        <% for (let i = 0; i < superheros.length; i++) { %>
+          <li>
+            <a href="/superheros/<%= superheros[i]._id %> "><%= superheros[i].name %> </a>
+          </li> 
+        <% } %>
+      </ul>      
+
+
+    </main>
 
 
   </div>
