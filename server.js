@@ -5,6 +5,7 @@ const app = express();
 const mongoose = require ('mongoose');
 
 const Superhero = require('./models/superhero.js');
+const { response } = require('express');
 
 // Middleware
 
@@ -33,10 +34,10 @@ mongoose.connection.on('error', (err) => {
 });
 
 
-// Index Route
+// Homepage Index Route
 
 app.get('/superheros',(request, response) => {
-  response.render('index.ejs')
+  response.render('home.ejs')
 });
 
 // Index Route for Super Heros
@@ -56,6 +57,22 @@ app.get('/superheros/new', (request, response) => {
 app.get('/superheros/show', (request, response) => {
   response.render ('superheros/show.ejs')
 });
+
+// Update Route
+app.post('/superheros/', (request, response) => {
+  Superhero.create(request.body, (err, createdSuperhero) => {
+    response.redirect('/superheros')
+  })
+})
+
+// Show Route
+app.get('/superheros', (request, response) => {
+  Superhero.find({}, (err, foundSuperheros) => {
+    response.render('/superheros/index.ejs', {
+      superheros: foundSuperheros
+    })
+  })
+})
 
 
 
