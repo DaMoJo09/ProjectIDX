@@ -8,7 +8,7 @@ const methodOverride = require('method-override');
 
 // Models
 const Superhero = require('./models/superhero.js');
-const { response, request } = require('express');
+const Powers = require("../models/powers.js")
 
 // Middleware
 app.use(methodOverride('_method'));
