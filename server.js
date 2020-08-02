@@ -1,18 +1,17 @@
-// Require statements
+// Require Statements
 const express = require('express');
 const app = express();
 
 const mongoose = require ('mongoose');
 
+// Model
 const Superhero = require('./models/superhero.js');
 
-
 // Middleware
-
 app.use(express.urlencoded({extended:false}));
 
-// Database connection
-const connectionString = 'mongodb://localhost/superheros'
+// Database Connection
+const connectionString = 'mongodb://localhost/superhero'
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
@@ -35,61 +34,52 @@ mongoose.connection.on('error', (err) => {
 });
 
 // New Superhero Route
-
-app.get('/superheros/new', (request, response) => {
-  response.render ('superheros/new.ejs')
+app.get('/superheroes/new', (request, response) => {
+  response.render ('superheroes/new.ejs')
 });
 
 // Create Superhero Route
-
-app.post('/superheros', (request, response) => {
+app.post('/superheroes', (request, response) => {
   Superhero.create(request.body, (err, createdSuperhero) => {
-    response.redirect('/superheros/gallery')
+    response.redirect('/superheroes/gallery')
     });
   });
 
-// Index Route for Superheros
-
-app.get('/superheros/gallery', (request, response) => {
-  Superhero.find({}, (err, allSuperheros) => {
-    response.render('superheros/index.ejs', {
-      superheros: allSuperheros
+// Index Route for Superheroes
+app.get('/superheroes/gallery', (request, response) => {
+  Superhero.find({}, (err, allSuperheroes) => {
+    response.render('superheroes/index.ejs', {
+      superheroes: allSuperheroes
     });  
   });
 });
 
 // Homepage Index Route
-
-app.get('/superheros',(request, response) => {
+app.get('/superheroes',(request, response) => {
   response.render('home.ejs')
 });
 
 
-// Show Route for Superheros
-
-app.get('/superheros/:id', (request, response) => {
+// Show Route for Superheroes
+app.get('/superheroes/:id', (request, response) => {
     Superhero.findById(request.params.id, (err, foundSuperhero) => {
-        response.render('superheros/show.ejs', {
-            superheros: foundSuperhero
+        response.render('superheroes/show.ejs', {
+            superheroes: foundSuperhero
     });
   });
 });
       
       
-//delete
-//edit
-//update
+// Delete Route for Superheroes
+
+// Edit Route for Superheroes
+
+// Update Route for Superheroes
 
 
-// // Update Route
-
-// app.get('/superheros/show', (request, response) => {
-//   response.render ('superheros/show.ejs')
-// });
 
       
 //  Listen function
-
 app.listen(3000, () => {
-  console.log('Heros GO!')
+  console.log('Heroes GO!')
 });
