@@ -4,10 +4,15 @@ const app = express();
 
 const mongoose = require ('mongoose');
 
-// Model
+const methodOverride = require('method-override');
+
+// Models
 const Superhero = require('./models/superhero.js');
+const { response } = require('express');
 
 // Middleware
+app.use(methodOverride('_method'));
+
 app.use(express.urlencoded({extended:false}));
 
 // Database Connection
@@ -71,6 +76,12 @@ app.get('/superheroes/:id', (request, response) => {
       
       
 // Delete Route for Superheroes
+app.delete('/superheroes/:id', (request, response) => {
+  Superhero.findByIdAndDelete(request.params.id, () => {
+    response.redirect('/superheroes/gallery')
+  });
+});
+
 
 // Edit Route for Superheroes
 
