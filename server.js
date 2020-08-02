@@ -8,7 +8,7 @@ const methodOverride = require('method-override');
 
 // Models
 const Superhero = require('./models/superhero.js');
-const { response } = require('express');
+const { response, request } = require('express');
 
 // Middleware
 app.use(methodOverride('_method'));
@@ -84,9 +84,20 @@ app.delete('/superheroes/:id', (request, response) => {
 
 
 // Edit Route for Superheroes
+app.get('/superheroes/:id/edit', (request, response) => {
+  Superhero.findById(request.params.id, (err, foundSuperhero) => {
+    response.render('superheroes/edit.ejs', {
+      superheroes: foundSuperhero
+    });
+  });
+});
 
 // Update Route for Superheroes
-
+app.put('/superheroes/:id', (request, response) => {
+  Superhero.findByIdAndUpdate(request.params.id, request.body, () => {
+    response.redirect('/superheroes/gallery')
+  });
+});
 
 
       
