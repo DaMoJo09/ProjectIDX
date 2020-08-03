@@ -7,8 +7,8 @@
 </head>
   
 <body>
-  <h1>Superhero Gallery</h1>
-  <div class="gallery">
+  <h1>Superhero Powers</h1>
+  <div class="index">
 
     <nav>
       <ul>
@@ -27,11 +27,11 @@
     </nav>
 
     <main>
-      <h2>List of Superheroes</h2>
+      <h2>List of Superhero Powers</h2>
       <ul>
-        <% for (let i = 0; i < superheroes.length; i++) { %>
+        <% for (let i = 0; i < powers.length; i++) { %>
           <li>
-            <a href="/superheroes/<%= superheroes[i]._id %> "><%= superheroes[i].name %> </a>
+            <a href="/powers/<%= powers[i]._id %> "><%= powers[i].name %> </a>
           </li> 
         <% } %>
       </ul>      

@@ -36,7 +36,7 @@ app.get('/superheroes',(request, response) => {
 });
 
 app.use('/superheroes', superheroesController);
-// app.use('/powers', powersController);
+app.use('/powers', powersController);
 
       
 //  Listen function
