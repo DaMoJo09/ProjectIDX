@@ -42,4 +42,20 @@ router.delete('/:id', (request, response) => {
     });
 });
 
+// Edit Route for Powers
+router.get('/:id/edit', (request, response) => {
+    Power.findById(request.params.id, (err, foundPower) => {
+        response.render('powers/edit.ejs', {
+            powers: foundPower
+        });
+    });
+});
+
+// Update Route for Powers
+router.put('/:id', (request, response) => {
+    Power.findByIdAndUpdate(request.params.id, request.body, () => {
+        response.redirect('/powers/index')
+    });
+});
+
 module.exports = router

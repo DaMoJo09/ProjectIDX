@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    
+    <h1>Edit <%= powers.name %>'s Info</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="/superheroes">Home</a>
+            </li>
+
+            <li>
+                <a href="superheroes/gallery">View Gallery</a>
+            </li>
+
+            <li>
+                <button><a href="/powers/index">View Powers</a></button>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Power Info:</h2>
+        <form action="/powers/<%= powers._id %>?_method=PUT" method="POST">
+            <input type="text" name="name" value="<%= powers.name %>"> <br/>
+            <textarea name="description"></textarea>
+            <input type="submit" value="Update Power">
+        </form>
+    </main>
+
+
+</body>
+</html>
