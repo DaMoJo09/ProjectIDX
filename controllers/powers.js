@@ -35,5 +35,11 @@ router.get('/:id', (request, response) => {
     });
 });
 
+// Delete Route for Powers
+router.delete('/:id', (request, response) => {
+    Power.findByIdAndDelete(request.params.id, () => {
+        response.redirect('/powers/index')
+    });
+});
 
 module.exports = router
