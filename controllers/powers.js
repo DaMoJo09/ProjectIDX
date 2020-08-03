@@ -2,7 +2,6 @@
 const express = require('express');
 const Superhero = require('../models/superhero');
 const Power = require('../models/power');
-const { all } = require('./superheroes');
 
 const router = express.Router();
 
@@ -18,7 +17,18 @@ router.get('/new', (request, response) => {
 // Create Power Route
 router.post('/', (request, response) => {
     Power.create(request.body, (err, createdPower) => {
-        response.redirect('/powers/index')
+        if(err){
+            response.send(err);
+        } else {
+            Superhero.findById(request.body.superheroId, (error, foundSuperhero) => {
+                console.log(foundSuperhero, 'foundSuperhero');
+                foundSuperhero.powers.push(createdPower);
+                foundSuperhero.save((err, savedSuperhero) => {
+                    console.log(savedSuperhero, 'savedNewSuperhero')
+                    response.redirect('/powers/index'); 
+                });
+            });
+        };
     });
 });
 
@@ -33,10 +43,21 @@ router.get('/index', (request, response) => {
 
 // Show Route for Powers
 router.get('/:id', (request, response) => {
-    Power.findById(request.params.id, (err, foundPower) => {
-        response.render('powers/show.ejs', {
-            powers: foundPower
-        });
+    Superhero.findOne({'powers': request.params.id})
+        .populate({
+                path: 'powers',
+                match: {_id: request.params.id}
+            })
+        .exec((err, foundSuperhero) => {
+            console.log(foundSuperhero, 'found superhero')
+        if(err){
+            response.send(err)
+        } else {
+            response.render('powers/show.ejs', {
+                superheroes: foundSuperhero,
+                powers: foundSuperhero.powers[0]
+            });
+        };
     });
 });
 
