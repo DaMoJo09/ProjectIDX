@@ -2,12 +2,17 @@
 const express = require('express');
 const Superhero = require('../models/superhero');
 const Power = require('../models/power');
+const { all } = require('./superheroes');
 
 const router = express.Router();
 
 // New Power Route
 router.get('/new', (request, response) => {
-    response.render ('powers/new.ejs')
+    Superhero.find({}, (err, allSuperheroes) => {
+        response.render ('powers/new.ejs', {
+            superheroes: allSuperheroes
+        })
+    });
 });
   
 // Create Power Route

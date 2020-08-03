@@ -29,6 +29,11 @@
     </nav>
     <main>
       <form action="/powers" method='POST'>
+        <select name="superheroId">
+          <% for(let i = 0; i < superheroes.length; i++) { %>
+            <option value="<%= superheroes[i]._id %>"><%= superheroes[i].name %></option>
+          <% } %>
+        </select><br/>
         <input type="text" name="name"/><br/>
         <textarea name="description"></textarea>
         <input type="submit" value="Create Power"/>
