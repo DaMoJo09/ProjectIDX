@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title></title>
 </head>
   
 <body>
-  <h1>Superheros</h1>
-  <div class="welcome">
+  <h1>Superhero Powers</h1>
+  <div class="index">
 
     <nav>
-      
       <ul>
         <li>
-          <button><a href="/superheroes/gallery">View Gallery</a></button>
+          <button><a href="/superheroes">Home</a></button>
         </li>
-
+        
         <li>
           <button><a href="/superheroes/new">Create Superhero</a></button>
         </li>
@@ -25,8 +24,18 @@
           <button><a href="/powers/new">Create Power</a></button>
         </li>
       </ul>
-    
     </nav>
+
+    <main>
+      <h2>List of Superhero Powers</h2>
+      <ul>
+        <% for (let i = 0; i < powers.length; i++) { %>
+          <li>
+            <a href="/powers/<%= powers[i]._id %> "><%= powers[i].name %> </a>
+          </li> 
+        <% } %>
+      </ul>      
+    </main>
 
   </div>
 

@@ -1,14 +1,13 @@
 // Require Statements
 const express = require('express');
-const app = express();
 
 const mongoose = require ('mongoose');
-
 const methodOverride = require('method-override');
 
-// Models
-const Superhero = require('./models/superhero.js');
-const { response, request } = require('express');
+const app = express();
+
+const superheroesController = require('./controllers/superheroes')
+const powersController = require('./controllers/powers')
 
 // Middleware
 app.use(methodOverride('_method'));
@@ -25,80 +24,19 @@ mongoose.connect(connectionString, {
   useFindAndModify: false
 });
 
-mongoose.connection.on('connected', () => {
-  console.log(`mongoose connected to ${connectionString}`)
+mongoose.connection.on('connected', () => console.log(`Mongoose connected to ${connectionString}`));
+mongoose.connection.on('disconnected', () => console.log('Mongoose disconnected'));
+mongoose.connection.on('error', (err) => console.log('Mongoose error', err));
 
-});
+// Routes
 
-mongoose.connection.on('disconnected', () =>{
-  console.log('mongoose disconnected')
-});
-
-mongoose.connection.on('error', (err) => {
-  console.log('mongoose error: ', err)
-});
-
-// New Superhero Route
-app.get('/superheroes/new', (request, response) => {
-  response.render ('superheroes/new.ejs')
-});
-
-// Create Superhero Route
-app.post('/superheroes', (request, response) => {
-  Superhero.create(request.body, (err, createdSuperhero) => {
-    response.redirect('/superheroes/gallery')
-    });
-  });
-
-// Index Route for Superheroes
-app.get('/superheroes/gallery', (request, response) => {
-  Superhero.find({}, (err, allSuperheroes) => {
-    response.render('superheroes/index.ejs', {
-      superheroes: allSuperheroes
-    });  
-  });
-});
-
-// Homepage Index Route
+// Homepage Route
 app.get('/superheroes',(request, response) => {
   response.render('home.ejs')
 });
 
-
-// Show Route for Superheroes
-app.get('/superheroes/:id', (request, response) => {
-    Superhero.findById(request.params.id, (err, foundSuperhero) => {
-        response.render('superheroes/show.ejs', {
-            superheroes: foundSuperhero
-    });
-  });
-});
-      
-      
-// Delete Route for Superheroes
-app.delete('/superheroes/:id', (request, response) => {
-  Superhero.findByIdAndDelete(request.params.id, () => {
-    response.redirect('/superheroes/gallery')
-  });
-});
-
-
-// Edit Route for Superheroes
-app.get('/superheroes/:id/edit', (request, response) => {
-  Superhero.findById(request.params.id, (err, foundSuperhero) => {
-    response.render('superheroes/edit.ejs', {
-      superheroes: foundSuperhero
-    });
-  });
-});
-
-// Update Route for Superheroes
-app.put('/superheroes/:id', (request, response) => {
-  Superhero.findByIdAndUpdate(request.params.id, request.body, () => {
-    response.redirect('/superheroes/gallery')
-  });
-});
-
+app.use('/superheroes', superheroesController);
+app.use('/powers', powersController);
 
       
 //  Listen function

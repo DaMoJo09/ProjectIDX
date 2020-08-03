@@ -7,8 +7,8 @@
 </head>
   
 <body>
-  <h1>Create New Superhero</h1>
-  <div class="createnewsuperhero">
+  <h1>Create New Power</h1>
+  <div class="createnewpower">
 
     <nav>
       <ul>
@@ -28,9 +28,15 @@
 
     </nav>
     <main>
-      <form action="/superheroes" method='POST'>
-        <input type="text" name= 'name'/>
-        <input type="submit" value="Create Superhero"/>
+      <form action="/powers" method='POST'>
+        <select name="superheroId">
+          <% for(let i = 0; i < superheroes.length; i++) { %>
+            <option value="<%= superheroes[i]._id %>"><%= superheroes[i].name %></option>
+          <% } %>
+        </select><br/>
+        <input type="text" name="name"/><br/>
+        <textarea name="description"></textarea>
+        <input type="submit" value="Create Power"/>
       </form>
     </main>
 
