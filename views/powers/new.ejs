@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
 </head>
+  
 <body>
-    <h2>New Power</h2>
-    <form action="/" method="POST"></form>
+  <h1>Create New Power</h1>
+  <div class="createnewpower">
+
+    <nav>
+      <ul>
+        <li>
+          <button><a href="/superheroes">Home</a></button>
+        </li>
+
+        <li>
+          <button><a href="/superheroes/gallery">View Gallery</a></button>
+        </li>
+
+        <li>
+          <button><a href="/powers/index">View Powers</a></button>
+        </li>
+
+      </ul>
+
+    </nav>
+    <main>
+      <form action="/powers" method='POST'>
+        <select name="superheroId">
+          <% for(let i = 0; i < superheroes.length; i++) { %>
+            <option value="<%= superheroes[i]._id %>"><%= superheroes[i].name %></option>
+          <% } %>
+        </select><br/>
+        <input type="text" name="name"/><br/>
+        <textarea name="description"></textarea>
+        <input type="submit" value="Create Power"/>
+      </form>
+    </main>
+
+  </div>
+
+  
 </body>
 </html>

@@ -3,9 +3,10 @@ const Powers = require("./powers")
 
 const superheroSchema = new mongoose.Schema({
     name: String,
-    Powers: [{
+
+    powers: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Powers"
+        ref: 'Power'
     }]
 })
 

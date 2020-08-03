@@ -1,14 +1,13 @@
 // Require Statements
 const express = require('express');
-const app = express();
 
 const mongoose = require ('mongoose');
-
 const methodOverride = require('method-override');
 
-// Models
-const Superhero = require('./models/superhero.js');
-const Powers = require("./models/powers.js")
+const app = express();
+
+const superheroesController = require('./controllers/superheroes')
+const powersController = require('./controllers/powers')
 
 // Middleware
 app.use(methodOverride('_method'));
@@ -25,23 +24,20 @@ mongoose.connect(connectionString, {
   useFindAndModify: false
 });
 
-mongoose.connection.on('connected', () => {
-  console.log(`mongoose connected to ${connectionString}`)
+mongoose.connection.on('connected', () => console.log(`Mongoose connected to ${connectionString}`));
+mongoose.connection.on('disconnected', () => console.log('Mongoose disconnected'));
+mongoose.connection.on('error', (err) => console.log('Mongoose error', err));
 
+// Routes
+
+// Homepage Route
+app.get('/superheroes',(request, response) => {
+  response.render('home.ejs')
 });
 
-mongoose.connection.on('disconnected', () =>{
-  console.log('mongoose disconnected')
-});
+app.use('/superheroes', superheroesController);
+app.use('/powers', powersController);
 
-mongoose.connection.on('error', (err) => {
-  console.log('mongoose error: ', err)
-});
-
-const heroRouter = require("./controllers/superheroes")
-const powerRouter = require("./controllers/powers")
-app.use("/superheroes", heroRouter)
-app.use("/superheroes", powerRouter)
       
 //  Listen function
 app.listen(3000, () => {

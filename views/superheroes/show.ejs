@@ -26,6 +26,13 @@
                         <li>Name: <%= superheroes.name %> </li>
                     </ul>
                 </h2>
+                <ul>
+                    <li>
+                        <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
+                        Super Powers: <a href="/superheroes/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].name %> </a> 
+                        <% } %> 
+                    </li>
+                </ul>
             </section>
 
             <section>
