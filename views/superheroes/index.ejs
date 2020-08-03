@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+  
+<body>
+  <h1>Superhero Gallery</h1>
+  <div class="gallery">
+
+    <nav>
+      <ul>
+        <li>
+          <button><a href="/superheroes">Home</a></button>
+        </li>
+        
+        <li>
+          <button><a href="/superheroes/new">Create Superhero</a></button>
+        </li>
+
+        <li>
+          <button><a href="/powers/new">Create Power</a></button>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h2>List of Superheroes</h2>
+      <ul>
+        <% for (let i = 0; i < superheroes.length; i++) { %>
+          <li>
+            <a href="/superheroes/<%= superheroes[i]._id %> "><%= superheroes[i].name %> </a>
+          </li> 
+        <% } %>
+      </ul>      
+    </main>
+
+  </div>
+
+  
+</body>
+</html>

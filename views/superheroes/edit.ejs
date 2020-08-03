@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    
+    <h1>Edit <%= superheroes.name %>'s Info</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="/superheroes">Home</a>
+            </li>
+
+            <li>
+                <a href="superheroes/gallery">View Gallery</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Superhero Profile:</h2>
+        <form action="/superheroes/<%= superheroes._id %>?_method=PUT" method="POST">
+            <input type="text" name="name" value="<%= superheroes.name %>"> <br/>
+            <input type="submit" value="Update Superhero">
+        </form>
+    </main>
+
+
+</body>
+</html>
