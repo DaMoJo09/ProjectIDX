@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <h1>Info for <%= powers.name %> Power</h1>
+
+    <nav>
+        <ul>
+            <li>
+                <button><a href="/superheroes">Home</a></button>
+            </li>
+
+            <li>
+                <button><a href="/superheroes/gallery">View Gallery</a></button>
+            </li>
+
+            <li>
+                <button><a href="/powers/index">View Powers</a></button>
+            </li>
+        </ul>
+
+        <main>
+            <section>
+                <h2>Power Info:
+                    <ul>
+                        <li>Name: <%= powers.name %> </li>
+                        <li>Description: <%= powers.description %> </li>
+                    </ul>
+                </h2>
+            </section>
+
+            <section>
+                <form action="/powers/<%= powers._id %>?_method=DELETE " method="POST">
+                    <input type="submit" value="Delete Power">
+                </form>
+            </section>
+
+            <section>
+                <a href="/powers/<%= powers._id %>/edit ">Edit</a>
+            </section>
+
+        </main>
+
+    </nav>
+
+
+</body>
+</html>

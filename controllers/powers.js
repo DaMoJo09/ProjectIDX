@@ -26,5 +26,14 @@ router.get('/index', (request, response) => {
     });
 });
 
+// Show Route for Powers
+router.get('/:id', (request, response) => {
+    Power.findById(request.params.id, (err, foundPower) => {
+        response.render('powers/show.ejs', {
+            powers: foundPower
+        });
+    });
+});
+
 
 module.exports = router
