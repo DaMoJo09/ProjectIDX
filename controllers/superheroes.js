@@ -1,3 +1,4 @@
+
 // Require Statements
 const express = require('express');
 const Superhero = require('../models/superhero');
@@ -5,11 +6,14 @@ const Power = require('../models/power');
 
 const router = express.Router();
 
+
+
 // New Superhero Route
 router.get('/new', (request, response) => {
     response.render ('superheroes/new.ejs')
+
 });
-  
+
 // Create Superhero Route
 router.post('/', (request, response) => {
     Superhero.create(request.body, (err, createdSuperhero) => {
@@ -26,15 +30,26 @@ router.get('/gallery', (request, response) => {
     });
 });
 
-// Show Route for Superheroes
+// Show Route for Powers
 router.get('/:id', (request, response) => {
-    Superhero.findById(request.params.id, (err, foundSuperhero) => {
-        response.render('superheroes/show.ejs', {
-            superheroes: foundSuperhero
-        });
+    console.log(request.params.id)
+    Superhero.findById(request.params.id)
+        .populate({
+            path: 'powers',
+        })
+    .exec((err, foundSuperhero) => {
+            console.log(foundSuperhero, 'found superhero')
+        if(err){
+            response.send(err)
+        } else {
+            response.render('superheroes/show.ejs', {
+                powers: foundSuperhero.powers,
+                superheroes: foundSuperhero
+            });
+        };
     });
 });
-    
+
 // Delete Route for Superheroes
 router.delete('/:id', (request, response) => {
     Superhero.findByIdAndDelete(request.params.id, () => {
