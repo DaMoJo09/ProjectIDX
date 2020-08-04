@@ -25,7 +25,7 @@ router.post('/', (request, response) => {
                 foundSuperhero.powers.push(createdPower);
                 foundSuperhero.save((err, savedSuperhero) => {
                     console.log(savedSuperhero, 'savedNewSuperhero')
-                    response.redirect('/powers/index'); 
+                    response.redirect('/superheroes/'+ savedSuperhero._id);
                 });
             });
         };
@@ -71,7 +71,7 @@ router.delete('/:id', (request, response) => {
                 foundSuperhero.powers.remove(request.params.id)
                 foundSuperhero.save((err, updatedSuperhero) => {
                     console.log(updatedSuperhero)
-                    response.redirect('/powers/index')
+                    response.redirect('/superheroes/'+updatedSuperhero._id)
                 });
             };
         });
@@ -114,7 +114,7 @@ router.put('/:id', (request, response) => {
                             console.log(newSuperhero)
                             newSuperhero.powers.push(updatedPower)
                             newSuperhero.save((err, savedNewSuperhero) => {
-                                response.redirect('/powers/'+request.params.id)
+                                response.redirect('/superheroes/'+newSuperhero._id)
                             });
                         });
                     });
