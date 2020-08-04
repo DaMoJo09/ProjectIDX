@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const Powers = require("./powers")
 
 const superheroSchema = new mongoose.Schema({
     name: String,

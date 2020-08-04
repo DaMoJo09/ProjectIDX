@@ -15,7 +15,7 @@
             </li>
 
             <li>
-                <button><a href="/superheroes/gallery">View Superhero Gallery</a></button>
+                <button><a href="/superheroes/gallery">View Gallery</a></button>
             </li>
         </ul>
 
@@ -29,7 +29,7 @@
                 <ul>
                     <li>
                         <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
-                        Super Powers: <a href="/superheroes/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].name %> </a> 
+                        Super Powers: <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].name %> </a> 
                         <% } %> 
                     </li>
                 </ul>

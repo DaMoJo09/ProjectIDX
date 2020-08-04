@@ -1,11 +1,9 @@
-
 // Require Statements
 const express = require('express');
 const Superhero = require('../models/superhero');
 const Power = require('../models/power');
 
 const router = express.Router();
-
 
 
 // New Superhero Route
@@ -30,7 +28,7 @@ router.get('/gallery', (request, response) => {
     });
 });
 
-// Show Route for Powers
+// Show Route for Superheroes
 router.get('/:id', (request, response) => {
     console.log(request.params.id)
     Superhero.findById(request.params.id)
@@ -43,8 +41,8 @@ router.get('/:id', (request, response) => {
             response.send(err)
         } else {
             response.render('superheroes/show.ejs', {
-                powers: foundSuperhero.powers,
-                superheroes: foundSuperhero
+                superheroes: foundSuperhero,
+                powers: foundSuperhero.powers
             });
         };
     });
