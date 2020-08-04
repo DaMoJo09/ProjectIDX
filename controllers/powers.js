@@ -80,17 +80,48 @@ router.delete('/:id', (request, response) => {
 
 // Edit Route for Powers
 router.get('/:id/edit', (request, response) => {
-    Power.findById(request.params.id, (err, foundPower) => {
-        response.render('powers/edit.ejs', {
-            powers: foundPower
+    Superhero.find({}, (err, allSuperheroes) => {
+        Superhero.findOne({'powers': request.params.id})
+        .populate({path: 'powers', match: {_id: request.params.id}})
+        .exec((err, foundPowerSuperhero) => {
+            console.log(foundPowerSuperhero)
+            if(err) {
+                response.send(err)
+            } else {
+                response.render('powers/edit.ejs', {
+                    powers: foundPowerSuperhero.powers[0],
+                    superheroes: allSuperheroes,
+                    powerSuperhero: foundPowerSuperhero
+                });
+            };
         });
     });
 });
 
 // Update Route for Powers
 router.put('/:id', (request, response) => {
-    Power.findByIdAndUpdate(request.params.id, request.body, () => {
-        response.redirect('/powers/index')
+    Power.findByIdAndUpdate(
+        request.params.id, 
+        request.body, 
+        {new: true}, 
+        (err, updatedPower) => {
+            Superhero.findOne({'powers': request.params.id}, (err, foundSuperhero) => {
+                console.log(foundSuperhero)
+                if(foundSuperhero._id.toString !== request.body.superheroId) {
+                    // foundSuperhero.powers.remove(request.params.id)
+                    foundSuperhero.save((err, savedFoundSuperhero) => {
+                        Superhero.findById(request.body.superheroId, (err, newSuperhero) => {
+                            console.log(newSuperhero)
+                            newSuperhero.powers.push(updatedPower)
+                            newSuperhero.save((err, savedNewSuperhero) => {
+                                response.redirect('/powers/'+request.params.id)
+                            });
+                        });
+                    });
+                } else {
+                    response.redirect('/powers/'+request.params.id)
+                };
+            });
     });
 });
 
