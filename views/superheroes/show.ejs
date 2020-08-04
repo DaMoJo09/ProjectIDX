@@ -17,22 +17,26 @@
             <li>
                 <button><a href="/superheroes/gallery">View Gallery</a></button>
             </li>
+
+            <li>
+                <button><a href="/powers/index">View Powers</a></button>
+            </li>
         </ul>
 
         <main>
             <section>
-                <h2>Superhero Info:
+                <h2>Superhero Info</h2>
+                
+                    <p>Name: <%= superheroes.name %></p>
+
+                    <p>Powers:</p>
                     <ul>
-                        <li>Name: <%= superheroes.name %> </li>
-                    </ul>
-                </h2>
-                <ul>
-                    <li>
                         <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
-                        Super Powers: <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].name %> </a> 
+                        <li>
+                            <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].name %> </a> <br/>
+                        </li>
                         <% } %> 
-                    </li>
-                </ul>
+                    </ul>   
             </section>
 
             <section>

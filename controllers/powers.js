@@ -63,8 +63,18 @@ router.get('/:id', (request, response) => {
 
 // Delete Route for Powers
 router.delete('/:id', (request, response) => {
-    Power.findByIdAndDelete(request.params.id, () => {
-        response.redirect('/powers/index')
+    Power.findByIdAndDelete(request.params.id, (err, deletedPower) => {
+        Superhero.findOne({'powers': request.params.id}, (err, foundSuperhero) => {
+            if(err) {
+                response.send(err)
+            } else {
+                foundSuperhero.powers.remove(request.params.id)
+                foundSuperhero.save((err, updatedSuperhero) => {
+                    console.log(updatedSuperhero)
+                    response.redirect('/powers/index')
+                });
+            };
+        });
     });
 });
 
