@@ -8,8 +8,9 @@ const router = express.Router();
 // New Superhero Route
 router.get('/new', (request, response) => {
     response.render ('superheroes/new.ejs')
+
 });
-  
+
 // Create Superhero Route
 router.post('/', (request, response) => {
     Superhero.create(request.body, (err, createdSuperhero) => {
@@ -28,17 +29,39 @@ router.get('/gallery', (request, response) => {
 
 // Show Route for Superheroes
 router.get('/:id', (request, response) => {
-    Superhero.findById(request.params.id, (err, foundSuperhero) => {
-        response.render('superheroes/show.ejs', {
-            superheroes: foundSuperhero
-        });
+    console.log(request.params.id)
+    Superhero.findById(request.params.id)
+        .populate({
+            path: 'powers',
+        })
+    .exec((err, foundSuperhero) => {
+            console.log(foundSuperhero, 'found superhero')
+        if(err){
+            response.send(err)
+        } else {
+            response.render('superheroes/show.ejs', {
+                superheroes: foundSuperhero,
+                powers: foundSuperhero.powers
+            });
+        };
     });
 });
-    
+
 // Delete Route for Superheroes
 router.delete('/:id', (request, response) => {
-    Superhero.findByIdAndDelete(request.params.id, () => {
-        response.redirect('/superheroes/gallery')
+    Superhero.findByIdAndDelete(request.params.id, (err, deletedSuperhero) => {
+        if(err) {
+            console.error(err)
+            response.send('error check console')
+        } else {
+            Power.deleteMany({
+                _id: {
+                    $in: deletedSuperhero.powers
+                }
+            }, (err, data) => {
+                response.redirect('/superheroes/gallery')
+            });
+        };
     });
 });
 
