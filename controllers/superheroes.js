@@ -5,7 +5,6 @@ const Power = require('../models/power');
 
 const router = express.Router();
 
-
 // New Superhero Route
 router.get('/new', (request, response) => {
     response.render ('superheroes/new.ejs')
@@ -50,8 +49,19 @@ router.get('/:id', (request, response) => {
 
 // Delete Route for Superheroes
 router.delete('/:id', (request, response) => {
-    Superhero.findByIdAndDelete(request.params.id, () => {
-        response.redirect('/superheroes/gallery')
+    Superhero.findByIdAndDelete(request.params.id, (err, deletedSuperhero) => {
+        if(err) {
+            console.error(err)
+            response.send('error check console')
+        } else {
+            Power.deleteMany({
+                _id: {
+                    $in: deletedSuperhero.powers
+                }
+            }, (err, data) => {
+                response.redirect('/superheroes/gallery')
+            });
+        };
     });
 });
 
