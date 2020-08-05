@@ -1,17 +1,27 @@
-body {
-    background-image: url('../public/images/lab_1.png');
+html { 
+    background: url('../images/lab_1.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    background-position: cover;
-    
+}
+
+body {
+    margin-top: 75px;
     display: flex;
     align-items: center;
     flex-direction: column;
     font-family: 'Anton', sans-serif;
+    color: white
 }
 
-/* h1 {
+.new {
+    background-image: url('../images/labsuperheros.png');
+}
 
-} */
+.superhero-header {
+    text-decoration: none;
+}
 
 ul {
     display: flex;
@@ -22,4 +32,8 @@ ul {
 
 li {
     padding: 20px;
+}
+
+a {
+    color:  white;
 }

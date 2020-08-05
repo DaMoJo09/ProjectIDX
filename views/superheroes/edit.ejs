@@ -23,7 +23,23 @@
     <main>
         <h2>Superhero Profile:</h2>
         <form action="/superheroes/<%= superheroes._id %>?_method=PUT" method="POST">
-            <input type="text" name="name" value="<%= superheroes.name %>"> <br/>
+            Name: <input type="text" name="name" value="<%= superheroes.name %>"> <br/>
+            Gender: <input type="text" name="name" value="<%= superheroes.gender %>"> <br/>
+            Race: <input type="text" name="name" value="<%= superheroes.race %>"> <br/>
+            Mask:
+            <input type="checkbox" name="mask"
+                <% if (superheroes.mask === true) { %>
+                    checked
+                <% } %>
+            />
+            <br/>
+            Weapon:
+            <input type="checkbox" name="weapon"
+                <% if (superheroes.weapon === true) { %>
+                    checked
+                <% } %>
+            /> 
+            <br/>
             <input type="submit" value="Update Superhero">
         </form>
     </main>

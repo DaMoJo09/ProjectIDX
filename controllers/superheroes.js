@@ -26,7 +26,7 @@ router.post('/', (request, response) => {
         superhero.weapon = false
     }
     Superhero.create(superhero, (err, createdSuperhero) => {
-        response.redirect('/superheroes/gallery')
+        response.redirect('/superheroes/'+ createdSuperhero._id)
     });
 });
 
@@ -88,8 +88,10 @@ router.get('/:id/edit', (request, response) => {
 
 // Update Route for Superheroes
 router.put('/:id', (request, response) => {
+    request.body.mask === 'on' ? request.body.mask = true : request.body.mask = false
+    request.body.weapon === 'on' ? request.body.weapon = true : request.body.weapon = false
     Superhero.findByIdAndUpdate(request.params.id, request.body, () => {
-        response.redirect('/superheroes/gallery')
+        response.redirect('/superheroes/'+ request.params.id)
     });
 });
 
