@@ -1,3 +1,7 @@
+.hidden {
+    display: hidden;
+}
+
 html { 
     background: url('../images/lab_1.png') no-repeat center center fixed; 
     -webkit-background-size: cover;
@@ -7,7 +11,7 @@ html {
 }
 
 body {
-    margin-top: 75px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -15,8 +19,13 @@ body {
     color: white
 }
 
-.new {
+.new,
+.edit {
     background-image: url('../images/labsuperheros.png');
+}
+
+.show {
+    background-image: url('../images/super heros movie 1_1.gif');
 }
 
 .superhero-header {

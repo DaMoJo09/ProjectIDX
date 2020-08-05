@@ -80,6 +80,7 @@ router.delete('/:id', (request, response) => {
 // Edit Route for Superheroes
 router.get('/:id/edit', (request, response) => {
     Superhero.findById(request.params.id, (err, foundSuperhero) => {
+        console.log(foundSuperhero)
         response.render('superheroes/edit.ejs', {
             superheroes: foundSuperhero
         });
@@ -91,6 +92,7 @@ router.put('/:id', (request, response) => {
     request.body.mask === 'on' ? request.body.mask = true : request.body.mask = false
     request.body.weapon === 'on' ? request.body.weapon = true : request.body.weapon = false
     Superhero.findByIdAndUpdate(request.params.id, request.body, () => {
+        console.log(request.body)
         response.redirect('/superheroes/'+ request.params.id)
     });
 });
