@@ -13,7 +13,19 @@ router.get('/new', (request, response) => {
 
 // Create Superhero Route
 router.post('/', (request, response) => {
-    Superhero.create(request.body, (err, createdSuperhero) => {
+    const superhero = request.body
+
+    if (superhero.mask === "on"){
+        superhero.mask = true
+    } else {
+        superhero.mask = false
+    }
+    if (superhero.weapon === "on"){
+        superhero.weapon = true
+    } else {
+        superhero.weapon = false
+    }
+    Superhero.create(superhero, (err, createdSuperhero) => {
         response.redirect('/superheroes/gallery')
     });
 });
