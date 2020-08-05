@@ -1,0 +1,23 @@
+body {
+    background-image: url('../public/images/lab_1.png');
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Anton', sans-serif;
+}
+
+/* h1 {
+
+} */
+
+ul {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    list-style: none;
+}
+
+li {
+    padding: 20px;
+}
