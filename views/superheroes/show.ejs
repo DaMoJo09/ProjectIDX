@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="show" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/public/assets/styles.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">    
     <title></title>
 </head>
-<body>
-    <h1>Show Page for <%= superheroes.name %> </h1>
+<body class="superhero-show">
+    <h1><a class="superhero-header" href="/superheroes">Superheroes</a></h1>
+    <h2>Show Page for <%= superheroes.name %> </h2>
 
     <nav>
         <ul>
@@ -14,20 +17,44 @@
                 <button><a href="/superheroes/gallery">View Superhero Gallery</a></button>
             </li>
 
+            <li>
+                <button><a href="/powers/new">Add Power to Superhero</a></button>
+            </li>
+
+                <button><a href="/superheroes/<%= superheroes._id %>/edit ">Edit Superhero</a></button>
+
         </ul>
+    </nav>
 
         <main>
             <section>
-                <h2>Superhero Info</h2>
-                
-                    <h3>Name: <%= superheroes.name %></h3>
+                <h3>Superhero Info</h3>
+                    <ul>
+                        <li>Name: <%= superheroes.name %></li><br/>
   
-                    <a href="/superheroes/<%= superheroes._id %>/edit ">Edit Name</a>
+                        <li>Gender: <%= superheroes.gender %></li><br/>
+                        
+                        <li>Race: <%= superheroes.race %></li><br/>
 
-                    <% let testImage = "images/super.heromguy.png" %>
-                    <% let heroImage = document.getElementById("test").setAttribute("src", testImage) %> 
+                        <li>Mask:
+                            <% if (superheroes.mask === true) { %>
+                                Yes
+                            <% } else { %>
+                                No
+                            <% } %>
+                        </li>     
+                        <br/>  
+                        
+                        <li>Weapon:
+                            <% if (superheroes.weapon === true) { %>
+                                Yes
+                            <% } else { %>
+                                No
+                            <% } %>
+                        </li>     
+                    </ul>
 
-                    <p>Powers:</p>
+                    <h4>Powers:</h4>
                     <ul>
                         <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
                         <li>
@@ -35,11 +62,82 @@
                         </li>
                         <% } %> 
                     </ul>   
+
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "male" && superheroes.mask === true 
+                        && superheroes.weapon === true && superheroes.race.toLowerCase() === "human") ? 
+                        "../public/images/test.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "male" && superheroes.mask == false 
+                        && superheroes.weapon === true && superheroes.race.toLowerCase() === "human") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "male" && superheroes.mask === true 
+                        && superheroes.weapon === false && superheroes.race.toLowerCase() === "human") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "male" && superheroes.mask === false 
+                        && superheroes.weapon === false && superheroes.race.toLowerCase() === "human") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "male" && superheroes.mask === true 
+                        && superheroes.weapon === true && superheroes.race.toLowerCase() === "mutant") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "male" && superheroes.mask === false 
+                        && superheroes.weapon === true && superheroes.race.toLowerCase() === "mutant") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "male" && superheroes.mask === true 
+                        && superheroes.weapon === false && superheroes.race.toLowerCase() === "mutant") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "male" && superheroes.mask === false 
+                        && superheroes.weapon === false && superheroes.race.toLowerCase() === "mutant") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "female" && superheroes.mask === true 
+                        && superheroes.weapon === true && superheroes.race.toLowerCase() === "human") ? 
+                        "../public/images/test.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "female" && superheroes.mask === false 
+                        && superheroes.weapon === true && superheroes.race.toLowerCase() === "human") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "female" && superheroes.mask === true 
+                        && superheroes.weapon === false && superheroes.race.toLowerCase() === "human") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "female" && superheroes.mask === false 
+                        && superheroes.weapon === false && superheroes.race.toLowerCase() === "human") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "female" && superheroes.mask === true 
+                        && superheroes.weapon === true && superheroes.race.toLowerCase() === "mutant") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "female" && superheroes.mask === false 
+                        && superheroes.weapon === true && superheroes.race.toLowerCase() === "mutant") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() === "female" && superheroes.mask === true 
+                        && superheroes.weapon === false && superheroes.race.toLowerCase() === "mutant") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+                    
+                    <img class="hero-image" src="<%= (superheroes.gender.toLowerCase() == "female" && superheroes.mask === false 
+                        && superheroes.weapon === false && superheroes.race.toLowerCase() == "mutant") ? 
+                        "../public/images/super heromguy.png": "" %> " alt="superhero"/>
+
+                 
+
+
+
+
+
+
+
             </section>
 
             <section>
-
-                <button><a href="/powers/new">Add Power to Superhero</a></button>
 
                 <form action="/superheroes/<%= superheroes._id %>?_method=DELETE " method="POST">
                     <input type="submit" value="Delete Superhero">
@@ -47,11 +145,8 @@
 
             </section>
 
-
         </main>
 
-    </nav>
-
-
+   
 </body>
 </html>

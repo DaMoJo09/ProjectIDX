@@ -1,0 +1,48 @@
+.hidden {
+    display: hidden;
+}
+
+html { 
+    background: url('../images/lab_1.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Anton', sans-serif;
+    color: white
+}
+
+.new,
+.edit {
+    background-image: url('../images/labsuperheros.png');
+}
+
+.show {
+    background-image: url('../images/super heros movie 1_1.gif');
+}
+
+.superhero-header {
+    text-decoration: none;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    list-style: none;
+}
+
+li {
+    padding: 20px;
+}
+
+a {
+    color:  white;
+}

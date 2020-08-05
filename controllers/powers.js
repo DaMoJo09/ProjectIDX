@@ -114,7 +114,7 @@ router.put('/:id', (request, response) => {
                             console.log(newSuperhero)
                             newSuperhero.powers.push(updatedPower)
                             newSuperhero.save((err, savedNewSuperhero) => {
-                                response.redirect('/superheroes/'+newSuperhero._id)
+                                response.redirect('/superheroes/'+ newSuperhero._id)
                             });
                         });
                     });

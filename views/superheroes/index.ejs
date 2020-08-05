@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="gallery" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <link href="/public/assets/styles.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <title>Superhero</title>
 </head>
   
-<body>
-  <h1>Superhero Gallery</h1>
+<body class="superhero-gallery">
+  <h1><a class="superhero-header" href="/superheroes">Superheroes</a></h1>
   <div class="gallery">
 
-    <nav>
+    <nav class="gallery-nav">
       <ul>
         <li>
-          <button><a href="/superheroes">Home</a></button>
-        </li>
-        
-        <li>
-          <button><a href="/superheroes/new">Create New Superhero</a></button>
+          <a href="/superheroes/new">Create New Superhero</a>
         </li>
 
         <li>
-          <button><a href="/powers/new">Add Power to Superhero</a></button>
+          <a href="/powers/new">Add Power to Superhero</a>
         </li>
       </ul>
     </nav>
 
-    <main>
+    <main class="gallery-main">
       <h2>List of Superheroes</h2>
       <ul>
         <% for (let i = 0; i < superheroes.length; i++) { %>

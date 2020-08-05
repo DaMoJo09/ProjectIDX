@@ -1,37 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="new" lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/public/assets/styles.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 </head>
   
-<body>
-  <h1>Create New Superhero</h1>
+<body class="superhero-new">
+  <h1><a class="superhero-header" href="/superheroes">Superheroes</a></h1>
+  
+  <h2>Create New Superhero</h1>
   <div class="createnewsuperhero">
 
     <nav>
       <ul>
         <li>
-          <button><a href="/superheroes/gallery">View Superhero Gallery</a></button>
+          <a href="/superheroes/gallery">View Superhero Gallery</a>
+        </li>
+
+        <li>
+          <a href="/powers/new">Add Power to Superhero</a>
         </li>
       </ul>
-
     </nav>
+
     <main>
-      <form action="/superheroes" method='POST'>
-        Name: <input type="text" name= 'name'/> <br>
-        Gender: <input type="text" name="gender" value="Male or Female"> <br>
-        Mask: <input type="checkbox" name="mask"> <br>
+    <form action="/superheroes" method='POST'>
+        Name: <input type="text" name= 'name'/><br>
+        Gender: <input type="text" name="gender" value="Male or Female"><br>
+        Race: <input type="text" name="race" value="Human or Mutant"><br>
+        Mask: <input type="checkbox" name="mask"><br>
         Weapon: <input type="checkbox" name="weapon"><br>
-        Race: <input type="text" name="race">
         <input class="testevent" type="submit" value="Create Superhero"/>
       </form>
-      <div>
-        <img id="test" src="../../images/filler.jpg" >
-      </div>
     </main>
 
-  </div>
+  <!-- </div>
 
   <script>
     document.querySelector(".testevent").addEventListener("submit", () => {
@@ -53,9 +58,7 @@
       }
     }
       
-
-  
-  </script>
+  </script> -->
   
 </body>
 </html>
