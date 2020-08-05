@@ -40,6 +40,6 @@ app.use('/powers', powersController);
 
       
 //  Listen function
-app.listen(3013, () => {
+app.listen(3000, () => {
   console.log('Heroes GO!')
 });

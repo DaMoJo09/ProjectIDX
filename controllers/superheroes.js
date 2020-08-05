@@ -1,12 +1,9 @@
-
 // Require Statements
 const express = require('express');
 const Superhero = require('../models/superhero');
 const Power = require('../models/power');
 
 const router = express.Router();
-
-
 
 // New Superhero Route
 router.get('/new', (request, response) => {
@@ -30,7 +27,7 @@ router.get('/gallery', (request, response) => {
     });
 });
 
-// Show Route for Powers
+// Show Route for Superheroes
 router.get('/:id', (request, response) => {
     console.log(request.params.id)
     Superhero.findById(request.params.id)
@@ -43,8 +40,8 @@ router.get('/:id', (request, response) => {
             response.send(err)
         } else {
             response.render('superheroes/show.ejs', {
-                powers: foundSuperhero.powers,
-                superheroes: foundSuperhero
+                superheroes: foundSuperhero,
+                powers: foundSuperhero.powers
             });
         };
     });
@@ -52,8 +49,19 @@ router.get('/:id', (request, response) => {
 
 // Delete Route for Superheroes
 router.delete('/:id', (request, response) => {
-    Superhero.findByIdAndDelete(request.params.id, () => {
-        response.redirect('/superheroes/gallery')
+    Superhero.findByIdAndDelete(request.params.id, (err, deletedSuperhero) => {
+        if(err) {
+            console.error(err)
+            response.send('error check console')
+        } else {
+            Power.deleteMany({
+                _id: {
+                    $in: deletedSuperhero.powers
+                }
+            }, (err, data) => {
+                response.redirect('/superheroes/gallery')
+            });
+        };
     });
 });
 

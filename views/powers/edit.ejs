@@ -7,7 +7,7 @@
 </head>
 <body>
     
-    <h1>Edit <%= powers.name %>'s Info</h1>
+    <h1>Edit <%= powers.name %> Details</h1>
     <nav>
         <ul>
             <li>
@@ -15,7 +15,7 @@
             </li>
 
             <li>
-                <button><a href="superheroes/gallery">View Gallery</a></button>
+                <button><a href="/superheroes/gallery">View Gallery</a></button>
             </li>
 
             <li>
@@ -27,6 +27,19 @@
     <main>
         <h2>Power Info:</h2>
         <form action="/powers/<%= powers._id %>?_method=PUT" method="POST">
+
+            <select name="superheroId">
+                <% for (let i = 0; i < superheroes.length; i++) { %> 
+                    <option value="<%= superheroes[i]._id %>">
+                       <% if (superheroes[i]._id.toString() === powerSuperhero._id.toString()) { %>
+                            selected
+                       <% } %>
+                    >
+                        <%= superheroes[i].name %> 
+                    </option>
+                <% } %> 
+            </select><br/>
+
             <input type="text" name="name" value="<%= powers.name %>"> <br/>
             <textarea name="description"></textarea>
             <input type="submit" value="Update Power">

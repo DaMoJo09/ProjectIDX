@@ -11,39 +11,39 @@
     <nav>
         <ul>
             <li>
-                <button><a href="/superheroes">Home</a></button>
-            </li>
-
-            <li>
                 <button><a href="/superheroes/gallery">View Superhero Gallery</a></button>
             </li>
+
         </ul>
 
         <main>
             <section>
-                <h2>Superhero Info:
+                <h2>Superhero Info</h2>
+                
+                    <h3>Name: <%= superheroes.name %></h3>
+  
+                    <a href="/superheroes/<%= superheroes._id %>/edit ">Edit Name</a>
+
+                    <p>Powers:</p>
                     <ul>
-                        <li>Name: <%= superheroes.name %> </li>
-                    </ul>
-                </h2>
-                <ul>
-                    <li>
                         <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
-                        Super Powers: <a href="/superheroes/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].name %> </a> 
+                        <li>
+                            <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].name %> </a> <br/>
+                        </li>
                         <% } %> 
-                    </li>
-                </ul>
+                    </ul>   
             </section>
 
             <section>
+
+                <button><a href="/powers/new">Add Power to Superhero</a></button>
+
                 <form action="/superheroes/<%= superheroes._id %>?_method=DELETE " method="POST">
                     <input type="submit" value="Delete Superhero">
                 </form>
+
             </section>
 
-            <section>
-                <a href="/superheroes/<%= superheroes._id %>/edit ">Edit</a>
-            </section>
 
         </main>
 
