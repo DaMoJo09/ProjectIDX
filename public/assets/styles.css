@@ -1,5 +1,7 @@
 body {
     background-image: url('../public/images/lab_1.png');
+    background-size: cover;
+    background-position: cover;
     
     display: flex;
     align-items: center;
