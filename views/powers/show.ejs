@@ -10,7 +10,7 @@
 <body>
     <h1><a class="superhero-header" href="/superheroes">Superheroes</a></h1>
 
-    <h2>Info for <%= powers.type %> Power</h2>
+    <h2><%= powers.type %> Power</h2>
 
     <nav>
         <ul>
@@ -26,12 +26,11 @@
 
     <main>
         <section>
-            <h2>Power Info:
+            <h2>Power Info:</h2>
                 <ul>
                     <li>Power Type: <%= powers.type %> </li>
                     <li>Description: <%= powers.description %> </li>
                 </ul>
-            </h2>
         </section>
 
         <section>
