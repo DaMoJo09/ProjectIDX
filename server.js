@@ -17,7 +17,7 @@ app.use(express.urlencoded({extended:false}));
 // Database Connection
 const connectionString = 'mongodb://localhost/superhero'
 
-mongoose.connect(connectionString, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true, 
   useCreateIndex: true, 
@@ -40,6 +40,6 @@ app.use('/powers', powersController);
 
       
 //  Listen function
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log('Heroes GO!')
 });
