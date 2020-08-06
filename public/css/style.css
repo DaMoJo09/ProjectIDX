@@ -1,9 +1,5 @@
-.hidden {
-    display: hidden;
-}
-
 html { 
-    background: url('../images/lab_1.png') no-repeat center center fixed; 
+    background: url('../images/labsuperheros.png') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -11,7 +7,7 @@ html {
 }
 
 body {
-    margin-top: 50px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -19,17 +15,29 @@ body {
     color: white
 }
 
-.new,
-.edit {
-    background-image: url('../images/labsuperheros.png');
+.home {
+    background-image: url('../images/lab_1.png');
+    margin-top: 200px;
 }
 
-.show {
-    background-image: url('../images/super heros movie 1_1.gif');
+.gallery {
+    background-image: url('../images/lab_1.png');
 }
 
 .superhero-header {
     text-decoration: none;
+}
+
+h1,
+h2 {
+    margin: 0px;
+}
+
+nav {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 440px;
 }
 
 ul {
