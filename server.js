@@ -6,6 +6,8 @@ const methodOverride = require('method-override');
 
 const app = express();
 
+require("dotenv").config()
+
 const superheroesController = require('./controllers/superheroes')
 const powersController = require('./controllers/powers')
 
@@ -16,8 +18,6 @@ app.use(express.urlencoded({extended:false}));
 
 // Database Connection
 const connectionString = 'mongodb://localhost/superhero'
-
-require("dotenv").config()
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
