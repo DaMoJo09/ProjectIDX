@@ -17,6 +17,8 @@ app.use(express.urlencoded({extended:false}));
 // Database Connection
 const connectionString = 'mongodb://localhost/superhero'
 
+require("dotenv").config()
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true, 
