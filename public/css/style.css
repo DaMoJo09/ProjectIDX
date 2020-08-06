@@ -16,12 +16,12 @@ body {
 }
 
 .home {
-    background-image: url('../images/lab_1.png');
-    margin-top: 200px;
+    background-image: url('../images/lab_open2.png');
+    margin-top: 150px;
 }
 
 .gallery {
-    background-image: url('../images/lab_1.png');
+    background-image: url('../images/LAB_HOME_2.png');
 }
 
 .superhero-header {
