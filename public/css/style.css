@@ -6,22 +6,23 @@ html {
     background-size: cover;
 }
 
+.home {
+    background-image: url('../images/lab_open2.png');
+    margin-top: 150px;
+}
+
+.gallery {
+    background-image: url('../images/LAB_HOME_2.png');
+    margin-top: 100px;
+}
+
 body {
-    margin-top: 20px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
     flex-direction: column;
     font-family: 'Anton', sans-serif;
     color: white
-}
-
-.home {
-    background-image: url('../images/lab_1.png');
-    margin-top: 200px;
-}
-
-.gallery {
-    background-image: url('../images/lab_1.png');
 }
 
 .superhero-header {
@@ -40,6 +41,10 @@ nav {
     width: 440px;
 }
 
+.gallery-nav {
+    align-items: center;
+}
+
 ul {
     display: flex;
     align-items: center;
@@ -54,3 +59,4 @@ li {
 a {
     color:  white;
 }
+

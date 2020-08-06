@@ -26,10 +26,13 @@
     </nav>
 
     <main class="gallery-main">
-      <h2>List of Superheroes</h2>
       <ul>
         <% for (let i = 0; i < superheroes.length; i++) { %>
           <li>
+            <a href="/superheroes/<%= superheroes[i]._id %> ">
+              <img class="hero-image" 
+                          src="<%= `../public/images/thumbnails/${superheroes[i].gender}-${superheroes[i].race}${superheroes[i].mask ? '-mask' : ''}${superheroes[i].weapon ? '-weapon' : ''}.png`%>"></a>
+            <br/>
             <a href="/superheroes/<%= superheroes[i]._id %> "><%= superheroes[i].name %> </a>
           </li> 
         <% } %>
