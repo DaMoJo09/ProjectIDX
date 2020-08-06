@@ -33,7 +33,7 @@ mongoose.connection.on('error', (err) => console.log('Mongoose error', err));
 // Routes
 
 // Homepage Route
-app.get('/superheroes',(request, response) => {
+app.get('/',(request, response) => {
   response.render('home.ejs')
 });
 
