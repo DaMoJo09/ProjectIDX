@@ -9,6 +9,8 @@ const app = express();
 const superheroesController = require('./controllers/superheroes')
 const powersController = require('./controllers/powers')
 
+const ejsLayouts = require('express-ejs-layouts')
+
 // Middleware
 app.use(methodOverride('_method'));
 

@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/public/assets/styles.css" rel="stylesheet" type="text/css" />
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <title></title>
+    <title>Superhero</title>
 </head>
 <body class="superhero-edit">
+    <h1><a class="superhero-header" href="/superheroes">Superheroes</a></h1>
+
+    <h2>Edit <%= superheroes.name %>'s Info</h2>
     
-    <h1>Edit <%= superheroes.name %>'s Info</h1>
     <nav>
         <ul>
             <li>
-                <a href="/superheroes">Home</a>
+                <a href="/superheroes/gallery">View Superhero Gallery</a>
             </li>
 
             <li>
-                <a href="/superheroes/gallery">View Gallery</a>
+                <a href="/powers/new">Add Power to Superhero</a>
             </li>
         </ul>
     </nav>

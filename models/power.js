@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const powerSchema = new mongoose.Schema({
-    name: String,
+    type: String,
     description: String
 })
 
