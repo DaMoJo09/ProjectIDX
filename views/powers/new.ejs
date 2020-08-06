@@ -4,21 +4,31 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <link href= "/public/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <title>Superhero</title>
 </head>
   
 <body>
-  <h1>Add New Power</h1>
+  <h1><a class="superhero-header" href="/superheroes">Superheroes</a></h1>
+
+  <h2>Add New Power</h2>
+  
   <div class="addnewpower">
 
     <nav>
       <ul>
         <li>
-          <button><a href="/superheroes/gallery">View Superhero Gallery</a></button>
+          <a href="/superheroes/gallery">View Superhero Gallery</a>
         </li>
-      </ul>
 
+        <li>
+          <a href="/superheroes/new">Create New Superhero</a>
+        </li>
+
+      </ul>
     </nav>
+
     <main>
       <form action="/powers" method='POST'>
         <select name="superheroId">
@@ -26,8 +36,8 @@
             <option value="<%= superheroes[i]._id %>"><%= superheroes[i].name %></option>
           <% } %>
         </select><br/>
-        <input type="text" name="name"/><br/>
-        <textarea name="description"></textarea>
+        Power Type: <input type="text" name="type"/><br/>
+        Description: <textarea name="description"></textarea><br/>
         <input type="submit" value="Add Power"/>
       </form>
     </main>

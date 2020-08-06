@@ -9,10 +9,14 @@ const app = express();
 const superheroesController = require('./controllers/superheroes')
 const powersController = require('./controllers/powers')
 
+const ejsLayouts = require('express-ejs-layouts')
+
 // Middleware
 app.use(methodOverride('_method'));
 
 app.use(express.urlencoded({extended:false}));
+
+app.use('/public', express.static('public'));
 
 // Database Connection
 const connectionString = 'mongodb://localhost/superhero'

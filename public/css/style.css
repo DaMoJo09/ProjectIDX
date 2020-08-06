@@ -1,0 +1,62 @@
+html { 
+    background: url('../images/labsuperheros.png') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.home {
+    background-image: url('../images/lab_open2.png');
+    margin-top: 150px;
+}
+
+.gallery {
+    background-image: url('../images/LAB_HOME_2.png');
+    margin-top: 100px;
+}
+
+body {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Anton', sans-serif;
+    color: white
+}
+
+.superhero-header {
+    text-decoration: none;
+}
+
+h1,
+h2 {
+    margin: 0px;
+}
+
+nav {
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 440px;
+}
+
+.gallery-nav {
+    align-items: center;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    list-style: none;
+}
+
+li {
+    padding: 20px;
+}
+
+a {
+    color:  white;
+}
+
