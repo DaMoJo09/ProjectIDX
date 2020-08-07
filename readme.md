@@ -2,18 +2,25 @@
 
 ## Overview ## 
 
-The superhero app is meant to allow users to create a superhero and add characteristics and powers displayed on a profile page. 
+The superhero app allows users to create a superhero and add characteristics and powers displayed on a profile page. 
 
-## Wireframe and ERD##
+
+## User Stories ##  
+When the user initially visits the page the top navigation can direct them to the gallery which will house a list of superheros, an option to create a superhero, or an option to add a power to a superhero. 
+
+A user will have the ability to: 
+- Add, delete, or update profile details about a superhero
+- Add, delete, or update a power that can be added to a superhero profile 
+
+
+## Wireframe and ERD ##
 
 Files included in Github
 
-## User Stories ##  
-When the user initially visits the page the top navigation can direct them to the gallery which will house a list of superheros, create a superhero, or add a power to a superhero. 
+![Wireframes](planning/superhero-wireframes.png)
 
-A user will have the ability to: 
-- Add, delete, or update a superhero
-- Add, delete, or update a power for a superhero 
+![ERD](planning/ERD Superhero Cards - MVP .png)
+
 
 ## Model ##
  Heroes: 
@@ -29,9 +36,11 @@ A user will have the ability to:
  - Power: String
  - Description: String
 
+
  ## Stretch Goals ## 
  - Add more heroes or options for users to customize
  - Set up user authoization to allow users their own superhero collection page
+
 
  ## Technology ## 
  - Express, Mongoose, Atlas, EJS, Layout, SASS
