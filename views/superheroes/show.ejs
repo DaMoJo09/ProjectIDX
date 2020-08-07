@@ -2,16 +2,12 @@
     <h1>Profile for <%= superheroes.name %> </h1>
 </header>
 
-<main>
-
-    <h3>Superhero Info</h3>
+<main class="hero-show">
+    <div class="hero-info">
         <ul>
-            <li>Name: <%= superheroes.name %></li><br/>
-
-            <li>Gender: <%= superheroes.gender %></li><br/>
-            
-            <li>Race: <%= superheroes.race %></li><br/>
-
+            <li>Name: <%= superheroes.name %></li>
+            <li>Gender: <%= superheroes.gender %></li>
+            <li>Race: <%= superheroes.race %></li>
             <li>Mask:
                 <% if (superheroes.mask === true) { %>
                     Yes
@@ -19,37 +15,31 @@
                     No
                 <% } %>
             </li>     
-            <br/>  
-            
             <li>Weapon:
                 <% if (superheroes.weapon === true) { %>
                     Yes
                 <% } else { %>
                     No
                 <% } %>
-            </li>     
-        </ul>
-
-    <h4>Powers:</h4>
-        <ul>
-            <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
-            <li>
-                <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].type %> </a> <br/>
+            </li><br>    
+        
+            <li>Powers:
+                <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
+                    <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].type %> </a> <br/>
             </li>
             <% } %> 
         </ul>   
-
-        <img class="hero-image" 
-                src="<%= `/images/${superheroes.gender}-${superheroes.race}${superheroes.mask ? '-mask' : ''}${superheroes.weapon ? '-weapon' : ''}.png`%>">
+    </div>
+        
+    <img class="hero-image" 
+        src="<%= `/images/${superheroes.gender}-${superheroes.race}${superheroes.mask ? '-mask' : ''}${superheroes.weapon ? '-weapon' : ''}.png`%>">
 
     <section>
+        <a class="hero-edit" href="/superheroes/<%= superheroes._id %>/edit ">Edit Superhero</a>
 
-        <a href="/superheroes/<%= superheroes._id %>/edit ">Edit Superhero</a>
-
-        <form action="/superheroes/<%= superheroes._id %>?_method=DELETE " method="POST">
+        <form class="hero-delete" action="/superheroes/<%= superheroes._id %>?_method=DELETE " method="POST">
             <input type="submit" value="Delete Superhero">
         </form>
-
     </section>
 
 </main>

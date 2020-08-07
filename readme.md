@@ -1,33 +1,34 @@
-# Super Hero Cards 
+# Superheroes
 
 ## Overview ## 
 
-The super hero cards site is meant to allow users to create a profile and add various hero cards to be displayed on the profile page. 
+The superhero app is meant to allow users to create a superhero and add characteristics and powers displayed on a profile page. 
 
 ## Wireframe ##
 
 ![Wireframe](Some display text: )
 
 ## User Stories ##  
-When the usuer initially visits the page, they will be prompted to create their user profile. Once they've created an account, the site will direct them to the gallery  which will house a list of the available heros. A user will have the ability to add, delete, or remove the element from their accont profile. 
+When the user initially visits the page the top navigation can direct them to the gallery which will house a list of superheros, create a superhero, or add a power to a superhero. 
+
+A user will have the ability to: 
+- Add, delete, or update a superhero
+- Add, delete, or update a power for a superhero 
 
 ## Model ##
-(Stretch Goal) User: 
- - ID: String
- - Nmae: String 
- - Heroes: Array
-
  Heroes: 
  - ID: String
  - Name: String
+ - Gender: String
+ - Mask: Boolean
+ - Weapon: Boolean
  - Powers: Array
 
  Powers: 
  - ID: String
  - Power: String
+ - Description: String
 
  ## Stretch Goals ## 
-
- - Create a quick add button that woudl sit on the hero thumbnail within the gallery 
- - Add additional heroes for the user to choose from.
- - Set up a "Log in as guest" to view the gallery without creating an account.
+ - Add more heroes or options for users to customize
+ - Set up user authoization to allow users their own superhero collection page

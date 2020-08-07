@@ -44,7 +44,38 @@ ul {
 .gallery {
   margin-top: 75px; }
 
-html {
+.gallery-hero {
+  max-width: 700px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 125px; }
+
+.hero-info,
+.power-info {
+  display: inline;
+  margin-top: 20px; }
+  .hero-info ul,
+  .power-info ul {
+    display: flex;
+    flex-direction: column; }
+  .hero-info a,
+  .power-info a {
+    font-size: 1rem; }
+
+.hero-edit,
+.power-edit {
+  font-size: 16px; }
+
+.hero-delete,
+.power-delete {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto; }
+
+body {
   background: url("../images/labsuperheros.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -59,8 +90,8 @@ header {
   position: relative;
   top: 100px; }
   header h1 {
-    margin: 15px;
-    font-size: 2rem;
+    margin-top: 75px;
+    font-size: 1.5rem;
     color: white; }
 
 main {
@@ -70,3 +101,5 @@ main {
   align-items: center;
   margin-top: 100px;
   color: white; }
+  main a {
+    align-content: center; }
