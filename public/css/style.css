@@ -44,14 +44,14 @@ ul {
 .gallery {
   margin-top: 75px; }
 
-.gallery-hero {
+.hero-gallery {
   max-width: 700px;
+  margin-left: 150px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
-  margin-top: 125px; }
+  justify-content: space-evenly; }
 
 .hero-info,
 .power-info {
