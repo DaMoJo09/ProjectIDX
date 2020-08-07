@@ -13,7 +13,7 @@
   position: fixed;
   top: 0;
   width: 100vw;
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25)); }
+  filter: drop-shadow(0 4px 4px rgba(247, 243, 243, 0.25)); }
 
 a {
   color: white;
@@ -63,7 +63,16 @@ ul {
     flex-direction: column; }
   .hero-info a,
   .power-info a {
-    font-size: 1rem; }
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap; }
+  .hero-info .powers,
+  .power-info .powers {
+    display: inline; }
+    .hero-info .powers li,
+    .power-info .powers li {
+      display: inline; }
 
 .hero-edit,
 .power-edit {
@@ -77,9 +86,6 @@ ul {
 
 body {
   background: url("../images/labsuperheros.png") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover; }
 
 header {

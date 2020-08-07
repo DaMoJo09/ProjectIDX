@@ -21,13 +21,15 @@
                 <% } else { %>
                     No
                 <% } %>
-            </li><br>    
-        
-            <li>Powers:
-                <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
-                    <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].type %> </a> <br/>
-            </li>
-            <% } %> 
+            </li>   
+            
+            <ul class="powers">
+                <li>Powers:
+                    <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
+                        <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].type %> </a>
+                </li>
+                <% } %> 
+            </ul>
         </ul>   
     </div>
         
