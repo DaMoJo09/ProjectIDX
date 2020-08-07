@@ -19,7 +19,7 @@ Files included in Github
 
 ![Wireframes](planning/superhero-wireframes.png)
 
-![ERD](planning/ERD-SuperheroCards-MVP.png)
+![ERD](planning/superhero-erd.png)
 
 
 ## Model ##
