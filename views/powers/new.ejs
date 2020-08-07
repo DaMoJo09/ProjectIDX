@@ -1,49 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<header>
+  <h1>Add New Power</h1>
+</header>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href= "/public/css/style.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <title>Superhero</title>
-</head>
-  
-<body>
-  <h1><a class="superhero-header" href="/">Superheroes</a></h1>
-
-  <h2>Add New Power</h2>
-  
-  <div class="addnewpower">
-
-    <nav>
-      <ul>
-        <li>
-          <a href="/superheroes/gallery">View Superhero Gallery</a>
-        </li>
-
-        <li>
-          <a href="/superheroes/new">Create New Superhero</a>
-        </li>
-
-      </ul>
-    </nav>
-
-    <main>
-      <form action="/powers" method='POST'>
-        <select name="superheroId">
-          <% for(let i = 0; i < superheroes.length; i++) { %>
-            <option value="<%= superheroes[i]._id %>"><%= superheroes[i].name %></option>
-          <% } %>
-        </select><br/>
-        Power Type: <input type="text" name="type"/><br/>
-        Description: <textarea name="description"></textarea><br/>
-        <input type="submit" value="Add Power"/>
-      </form>
-    </main>
-
-  </div>
-
-  
-</body>
-</html>
+<main>
+  <form action="/powers" method='POST'>
+    <select name="superheroId">
+      <% for(let i = 0; i < superheroes.length; i++) { %>
+        <option value="<%= superheroes[i]._id %>"><%= superheroes[i].name %></option>
+      <% } %>
+    </select><br/>
+    Power Type: <input type="text" name="type"/><br/>
+    Description: <textarea name="description"></textarea><br/>
+    <input type="submit" value="Add Power"/>
+  </form>
+</main>

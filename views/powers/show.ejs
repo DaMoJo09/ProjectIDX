@@ -1,54 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href= "/public/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <title>Superhero</title>
-</head>
-<body>
-    <h1><a class="superhero-header" href="/">Superheroes</a></h1>
+<header>
+    <h1><%= powers.type %> Power</h1>
+</header>  
 
-    <h2><%= powers.type %> Power</h2>
+<nav>
+    <ul>
+        <li>
+            <a href="/superheroes/gallery">View Superhero Gallery</a>
+        </li>
 
-    <nav>
-        <ul>
-            <li>
-                <a href="/superheroes/gallery">View Superhero Gallery</a>
-            </li>
+        <li>
+            <a href="/superheroes/new">Create New Superhero</a>
+        </li>
+    </ul>
+</nav>
 
-            <li>
-                <a href="/superheroes/new">Create New Superhero</a>
-            </li>
-        </ul>
-    </nav>
+<main>
+    <section>
+        <h2>Power Info:</h2>
+            <ul>
+                <li>Power Type: <%= powers.type %> </li>
+                <li>Description: <%= powers.description %> </li>
+            </ul>
+    </section>
 
-    <main>
-        <section>
-            <h2>Power Info:</h2>
-                <ul>
-                    <li>Power Type: <%= powers.type %> </li>
-                    <li>Description: <%= powers.description %> </li>
-                </ul>
-        </section>
+    <section>
+        <a href="/powers/<%= powers._id %>/edit ">Edit Power</a>
+    </section>
 
-        <section>
-            <a href="/powers/<%= powers._id %>/edit ">Edit Power</a>
-        </section>
+    <section>
+        <form action="/powers/<%= powers._id %>?_method=DELETE " method="POST">
+            <input type="submit" value="Delete Power">
+        </form>
+    </section>
 
-        <section>
-            <form action="/powers/<%= powers._id %>?_method=DELETE " method="POST">
-                <input type="submit" value="Delete Power">
-            </form>
-        </section>
+    <section>
+        Power belongs to: <a href="/superheroes/<%= superheroes._id %>"><%= superheroes.name %></a>
+    </section>
 
-        <section>
-            Power belongs to: <a href="/superheroes/<%= superheroes._id %>"><%= superheroes.name %></a>
-        </section>
-
-    </main>
-
-
-</body>
-</html>
+</main>

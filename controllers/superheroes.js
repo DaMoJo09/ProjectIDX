@@ -7,7 +7,7 @@ const router = express.Router();
 
 // New Superhero Route
 router.get('/new', (request, response) => {
-    response.render ('superheroes/new.ejs')
+    response.render ('superheroes/new')
 
 });
 
@@ -41,17 +41,15 @@ router.get('/gallery', (request, response) => {
 
 // Show Route for Superheroes
 router.get('/:id', (request, response) => {
-    console.log(request.params.id)
     Superhero.findById(request.params.id)
         .populate({
             path: 'powers',
         })
     .exec((err, foundSuperhero) => {
-            console.log(foundSuperhero, 'found superhero')
         if(err){
             response.send(err)
         } else {
-            response.render('superheroes/show.ejs', {
+            response.render('superheroes/show', {
                 superheroes: foundSuperhero,
                 powers: foundSuperhero.powers
             });
@@ -80,8 +78,7 @@ router.delete('/:id', (request, response) => {
 // Edit Route for Superheroes
 router.get('/:id/edit', (request, response) => {
     Superhero.findById(request.params.id, (err, foundSuperhero) => {
-        console.log(foundSuperhero)
-        response.render('superheroes/edit.ejs', {
+        response.render('superheroes/edit', {
             superheroes: foundSuperhero
         });
     });
@@ -92,7 +89,6 @@ router.put('/:id', (request, response) => {
     request.body.mask === 'on' ? request.body.mask = true : request.body.mask = false
     request.body.weapon === 'on' ? request.body.weapon = true : request.body.weapon = false
     Superhero.findByIdAndUpdate(request.params.id, request.body, () => {
-        console.log(request.body)
         response.redirect('/superheroes/'+ request.params.id)
     });
 });

@@ -21,10 +21,8 @@ router.post('/', (request, response) => {
             response.send(err);
         } else {
             Superhero.findById(request.body.superheroId, (error, foundSuperhero) => {
-                console.log(foundSuperhero, 'foundSuperhero');
                 foundSuperhero.powers.push(createdPower);
                 foundSuperhero.save((err, savedSuperhero) => {
-                    console.log(savedSuperhero, 'savedNewSuperhero')
                     response.redirect('/superheroes/'+ savedSuperhero._id);
                 });
             });
@@ -49,7 +47,7 @@ router.get('/:id', (request, response) => {
                 match: {_id: request.params.id}
             })
         .exec((err, foundSuperhero) => {
-            console.log(foundSuperhero, 'found superhero')
+            
         if(err){
             response.send(err)
         } else {
@@ -70,7 +68,6 @@ router.delete('/:id', (request, response) => {
             } else {
                 foundSuperhero.powers.remove(request.params.id)
                 foundSuperhero.save((err, updatedSuperhero) => {
-                    console.log(updatedSuperhero)
                     response.redirect('/superheroes/'+updatedSuperhero._id)
                 });
             };
@@ -84,7 +81,6 @@ router.get('/:id/edit', (request, response) => {
         Superhero.findOne({'powers': request.params.id})
         .populate({path: 'powers', match: {_id: request.params.id}})
         .exec((err, foundPowerSuperhero) => {
-            console.log(foundPowerSuperhero)
             if(err) {
                 response.send(err)
             } else {
@@ -106,12 +102,9 @@ router.put('/:id', (request, response) => {
         {new: true}, 
         (err, updatedPower) => {
             Superhero.findOne({'powers': request.params.id}, (err, foundSuperhero) => {
-                console.log(foundSuperhero)
                 if(foundSuperhero._id.toString !== request.body.superheroId) {
-                    // foundSuperhero.powers.remove(request.params.id)
                     foundSuperhero.save((err, savedFoundSuperhero) => {
                         Superhero.findById(request.body.superheroId, (err, newSuperhero) => {
-                            console.log(newSuperhero)
                             newSuperhero.powers.push(updatedPower)
                             newSuperhero.save((err, savedNewSuperhero) => {
                                 response.redirect('/superheroes/'+ newSuperhero._id)

@@ -1,84 +1,55 @@
-<!DOCTYPE html>
-<html class="show" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/public/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <title>Superhero</title>
-</head>
-<body class="superhero-show">
-    <h1><a class="superhero-header" href="/">Superheroes</a></h1>
-    
-    <h2>Profile for <%= superheroes.name %> </h2>
+<header>
+    <h1>Profile for <%= superheroes.name %> </h1>
+</header>
 
-    <nav>
+<main>
+
+    <h3>Superhero Info</h3>
         <ul>
-            <li>
-                <a href="/superheroes/gallery">View Superhero Gallery</a>
-            </li>
+            <li>Name: <%= superheroes.name %></li><br/>
 
-            <li>
-                <a href="/powers/new">Add Power to Superhero</a>
-            </li>
+            <li>Gender: <%= superheroes.gender %></li><br/>
+            
+            <li>Race: <%= superheroes.race %></li><br/>
 
+            <li>Mask:
+                <% if (superheroes.mask === true) { %>
+                    Yes
+                <% } else { %>
+                    No
+                <% } %>
+            </li>     
+            <br/>  
+            
+            <li>Weapon:
+                <% if (superheroes.weapon === true) { %>
+                    Yes
+                <% } else { %>
+                    No
+                <% } %>
+            </li>     
         </ul>
-    </nav>
 
-    <main>
-        <div id="superhero-container">
-            <h3>Superhero Info</h3>
-                <ul>
-                    <li>Name: <%= superheroes.name %></li><br/>
+    <h4>Powers:</h4>
+        <ul>
+            <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
+            <li>
+                <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].type %> </a> <br/>
+            </li>
+            <% } %> 
+        </ul>   
 
-                    <li>Gender: <%= superheroes.gender %></li><br/>
-                    
-                    <li>Race: <%= superheroes.race %></li><br/>
+        <img class="hero-image" 
+                src="<%= `/images/${superheroes.gender}-${superheroes.race}${superheroes.mask ? '-mask' : ''}${superheroes.weapon ? '-weapon' : ''}.png`%>">
 
-                    <li>Mask:
-                        <% if (superheroes.mask === true) { %>
-                            Yes
-                        <% } else { %>
-                            No
-                        <% } %>
-                    </li>     
-                    <br/>  
-                    
-                    <li>Weapon:
-                        <% if (superheroes.weapon === true) { %>
-                            Yes
-                        <% } else { %>
-                            No
-                        <% } %>
-                    </li>     
-                </ul>
+    <section>
 
-                <h4>Powers:</h4>
-                <ul>
-                    <% for (let i = 0; i < superheroes.powers.length; i++ ) { %> 
-                    <li>
-                        <a href="/powers/<%= superheroes.powers[i]._id %>"><%= superheroes.powers[i].type %> </a> <br/>
-                    </li>
-                    <% } %> 
-                </ul>   
+        <a href="/superheroes/<%= superheroes._id %>/edit ">Edit Superhero</a>
 
-                <img class="hero-image" 
-                        src="<%= `../public/images/${superheroes.gender}-${superheroes.race}${superheroes.mask ? '-mask' : ''}${superheroes.weapon ? '-weapon' : ''}.png`%>">
+        <form action="/superheroes/<%= superheroes._id %>?_method=DELETE " method="POST">
+            <input type="submit" value="Delete Superhero">
+        </form>
 
-            </div>
+    </section>
 
-        <section>
-
-            <a href="/superheroes/<%= superheroes._id %>/edit ">Edit Superhero</a>
-
-            <form action="/superheroes/<%= superheroes._id %>?_method=DELETE " method="POST">
-                <input type="submit" value="Delete Superhero">
-            </form>
-
-        </section>
-
-    </main>
-
-   
-</body>
-</html>
+</main>
