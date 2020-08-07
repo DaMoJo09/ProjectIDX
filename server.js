@@ -6,19 +6,21 @@ const methodOverride = require('method-override');
 
 const app = express();
 
-require("dotenv").config()
+const ejsLayouts = require('express-ejs-layouts');
 
-const superheroesController = require('./controllers/superheroes')
-const powersController = require('./controllers/powers')
+require("dotenv").config();
 
-const ejsLayouts = require('express-ejs-layouts')
+const superheroesController = require('./controllers/superheroes');
+const powersController = require('./controllers/powers');
 
 // Middleware
+app.use(express.urlencoded({extended:false}));
+app.use(express.static(__dirname + '/public'));
+
 app.use(methodOverride('_method'));
 
-app.use(express.urlencoded({extended:false}));
-
-app.use('/public', express.static('public'));
+app.set('view engine', 'ejs');
+app.use(ejsLayouts);
 
 // Database Connection
 const connectionString = 'mongodb://localhost/superhero'
@@ -38,7 +40,7 @@ mongoose.connection.on('error', (err) => console.log('Mongoose error', err));
 
 // Homepage Route
 app.get('/',(request, response) => {
-  response.render('home.ejs')
+  response.render('home')
 });
 
 app.use('/superheroes', superheroesController);

@@ -1,51 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href= "/public/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <title>Superhero</title>
-</head>
-<body>
-    <h1><a class="superhero-header" href="/">Superheroes</a></h1>
+<header>
+    <h1>Edit <%= powers.type %> Details</h1>
+</header>
 
-    <h2>Edit <%= powers.type %> Details</h2>
-    
-    <nav>
-        <ul>
-              <li>
-                <a href="/superheroes/gallery">View Superhero Gallery</a>
-            </li>
+<main>
+    <h2>Power Info:</h2>
+    <form action="/powers/<%= powers._id %>?_method=PUT" method="POST">
 
-            <li>
-                <a href="/superheroes/new">Create New Superhero</a>
-            </li>
-        </ul>
-    </nav>
+        <select name="superheroId">
+            <% for (let i = 0; i < superheroes.length; i++) { %> 
+                <option value="<%= superheroes[i]._id %>">
+                    <% if (superheroes[i]._id.toString() === powerSuperhero._id.toString()) { %>
+                        Selected Superhero
+                    <% } %>
+                >
+                    <%= superheroes[i].name %> 
+                </option>
+            <% } %> 
+        </select><br/>
 
-    <main>
-        <h2>Power Info:</h2>
-        <form action="/powers/<%= powers._id %>?_method=PUT" method="POST">
-
-            <select name="superheroId">
-                <% for (let i = 0; i < superheroes.length; i++) { %> 
-                    <option value="<%= superheroes[i]._id %>">
-                       <% if (superheroes[i]._id.toString() === powerSuperhero._id.toString()) { %>
-                            Selected Superhero
-                       <% } %>
-                    >
-                        <%= superheroes[i].name %> 
-                    </option>
-                <% } %> 
-            </select><br/>
-
-            Power Type: <input type="text" name="type" value="<%= powers.type %>"> <br/>
-            Description: <textarea name="description"></textarea><br/>
-            <input type="submit" value="Update Power">
-        </form>
-    </main>
-
-
-</body>
-</html>
+        Power Type: <input type="text" name="type" value="<%= powers.type %>"> <br/>
+        Description: <textarea name="description"></textarea><br/>
+        <input type="submit" value="Update Power">
+    </form>
+</main>

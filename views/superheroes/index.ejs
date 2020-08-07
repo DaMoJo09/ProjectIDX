@@ -1,46 +1,17 @@
-<!DOCTYPE html>
-<html class="gallery" lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/public/css/style.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <title>Superhero</title>
-</head>
-  
-<body class="superhero-gallery">
-  <h1><a class="superhero-header" href="/">Superheroes</a></h1>
-  
-  <div class="gallery-container">
+<header class="gallery">
+  <h1>Gallery</h1>
+</header>
 
-    <nav class="gallery-nav">
-      <ul>
-        <li>
-          <a href="/superheroes/new">Create New Superhero</a>
-        </li>
-
-        <li>
-          <a href="/powers/new">Add Power to Superhero</a>
-        </li>
-      </ul>
-    </nav>
-
-    <main class="gallery-main">
-      <ul>
-        <% for (let i = 0; i < superheroes.length; i++) { %>
-          <li>
-            <a href="/superheroes/<%= superheroes[i]._id %> ">
-              <img class="hero-image" 
-                          src="<%= `../public/images/thumbnails/${superheroes[i].gender}-${superheroes[i].race}${superheroes[i].mask ? '-mask' : ''}${superheroes[i].weapon ? '-weapon' : ''}.png`%>"></a>
-            <br/>
-            <a href="/superheroes/<%= superheroes[i]._id %> "><%= superheroes[i].name %> </a>
-          </li> 
-        <% } %>
-      </ul>      
-    </main>
-
-  </div>
-
-  
-</body>
-</html>
+<main class="hero-gallery">
+  <ul>
+    <% for (let i = 0; i < superheroes.length; i++) { %>
+      <li>
+        <a href="/superheroes/<%= superheroes[i]._id %> ">
+          <img class="hero-image" 
+                      src="<%= `/images/thumbnails/${superheroes[i].gender}-${superheroes[i].race}${superheroes[i].mask ? '-mask' : ''}${superheroes[i].weapon ? '-weapon' : ''}.png`%>"></a>
+        <br/>
+        <a href="/superheroes/<%= superheroes[i]._id %> "><%= superheroes[i].name %> </a>
+      </li> 
+    <% } %>
+  </ul>      
+</main>
