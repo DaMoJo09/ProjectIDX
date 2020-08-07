@@ -1,45 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href= "/public/css/style.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <title>Superhero</title>
-</head>
-  
-<body>
-  <h1><a class="superhero-header" href="/superheroes">Superheroes</a></h1>
+<header>
+  <h1>Superhero Powers</h1>
+</header>
 
-  <h2>Superhero Powers</h2>
-  
-  <div class="index">
-
-    <nav>
-      <ul>
-        <li>
-          <a href="/superheroes/new">Create New Superhero</a>
-        </li>
-
-        <li>
-          <a href="/powers/new">Add Power to Superhero</a>
-        </li>
-      </ul>
-    </nav>
-
-    <main>
-      <h2>List of Superhero Powers</h2>
-      <ul>
-        <% for (let i = 0; i < powers.length; i++) { %>
-          <li>
-            <a href="/powers/<%= powers[i]._id %> "><%= powers[i].type %> </a>
-          </li> 
-        <% } %>
-      </ul>      
-    </main>
-
-  </div>
-
-  
-</body>
-</html>
+<main>
+  <h2>List of Superhero Powers</h2>
+  <ul>
+    <% for (let i = 0; i < powers.length; i++) { %>
+      <li>
+        <a href="/powers/<%= powers[i]._id %> "><%= powers[i].type %> </a>
+      </li> 
+    <% } %>
+  </ul>      
+</main>

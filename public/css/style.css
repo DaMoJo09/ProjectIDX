@@ -1,62 +1,111 @@
-html { 
-    background: url('../images/labsuperheros.png') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Anton", sans-serif; }
 
-.home {
-    background-image: url('../images/lab_open2.png');
-    margin-top: 150px;
-}
-
-.gallery {
-    background-image: url('../images/LAB_HOME_2.png');
-    margin-top: 100px;
-}
-
-body {
-    margin-top: 50px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Anton', sans-serif;
-    color: white
-}
-
-.superhero-header {
-    text-decoration: none;
-}
-
-h1,
-h2 {
-    margin: 0px;
-}
-
-nav {
-    margin: 0px;
-    border: 0px;
-    padding: 0px;
-    width: 440px;
-}
-
-.gallery-nav {
-    align-items: center;
-}
-
-ul {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    list-style: none;
-}
-
-li {
-    padding: 20px;
-}
+.navbar {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  filter: drop-shadow(0 4px 4px rgba(247, 243, 243, 0.25)); }
 
 a {
-    color:  white;
-}
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 1.5rem; }
+  a:hover {
+    color: grey;
+    transition: all o 0.5s ease-in-out; }
 
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  align-items: center; }
+  ul a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 1.5rem; }
+
+.home {
+  margin-top: 200px; }
+  .home h1 {
+    font-size: 3rem; }
+
+.gallery {
+  margin-top: 75px; }
+
+.hero-gallery {
+  max-width: 700px;
+  margin-left: 150px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly; }
+
+.hero-info,
+.power-info {
+  display: inline;
+  margin-top: 20px; }
+  .hero-info ul,
+  .power-info ul {
+    display: flex;
+    flex-direction: column; }
+  .hero-info a,
+  .power-info a {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap; }
+  .hero-info .powers,
+  .power-info .powers {
+    display: inline; }
+    .hero-info .powers li,
+    .power-info .powers li {
+      display: inline; }
+
+.hero-edit,
+.power-edit {
+  font-size: 16px; }
+
+.hero-delete,
+.power-delete {
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto; }
+
+body {
+  background: url("../images/labsuperheros.png") no-repeat center center fixed;
+  background-size: cover; }
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  top: 100px; }
+  header h1 {
+    margin-top: 75px;
+    font-size: 1.5rem;
+    color: white; }
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 100px;
+  color: white; }
+  main a {
+    align-content: center; }
