@@ -6,6 +6,8 @@ const methodOverride = require('method-override');
 
 const app = express();
 
+require("dotenv").config()
+
 const superheroesController = require('./controllers/superheroes')
 const powersController = require('./controllers/powers')
 
@@ -35,7 +37,7 @@ mongoose.connection.on('error', (err) => console.log('Mongoose error', err));
 // Routes
 
 // Homepage Route
-app.get('/superheroes',(request, response) => {
+app.get('/',(request, response) => {
   response.render('home.ejs')
 });
 
